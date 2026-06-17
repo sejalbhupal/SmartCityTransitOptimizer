@@ -1,0 +1,14 @@
+# Executables
+*.exe
+
+# VS Code
+.vscode/
+
+# Temporary files
+*.o
+*.obj
+*.log
+
+# CSV outputs generated during runtime
+data/journey_log.csv
+data/station_stats.csv
