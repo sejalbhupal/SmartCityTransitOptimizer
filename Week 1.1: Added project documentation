@@ -1,0 +1,15 @@
+Smart City Transit Optimizer
+
+A DSA-focused transit simulation system built in C++.
+
+Week 1 Features:
+- Arrays & Strings for route management
+- Linked List for passenger tracking
+- Stack & Queue for journey logs
+- Binary Search for fare lookup
+- Recursion for path finding
+- Merge Sort for schedule optimization
+- CSV logging for analytics
+
+Tech Stack:
+C++, STL, File Handling, DSA
