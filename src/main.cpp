@@ -29,6 +29,7 @@
 #include "ScheduleSorter.h"
 #include "PathFinder.h"
 #include "CSVLogger.h"
+#include "TripSimulator.h"
 
 using namespace std;
 
@@ -76,6 +77,10 @@ void printMenu() {
     cout <<   "  |  16. View bus schedule                      |\n";
     cout <<   "  |  17. Sort schedule by arrival time          |\n";
     cout <<   "  |  18. Sort schedule by seats available       |\n";
+    cout <<   "  +---------------------------------------------+\n";
+    cout <<   "  |  SIMULATOR (Week 2)                         |\n";
+    cout <<   "  |  19. Simulate N trips (auto-generate data)  |\n";
+    cout <<   "  |  20. Simulate bus delays                    |\n";
     cout <<   "  +---------------------------------------------+\n";
     cout <<   "  |   0. Exit                                   |\n";
     cout <<   "  +---------------------------------------------+\n";
@@ -128,6 +133,7 @@ int main() {
     ScheduleSorter ss;
     PathFinder     pf(rm);   // PathFinder needs RouteManager reference
     CSVLogger      logger;
+    TripSimulator  sim(rm, fl, ss, logger);
 
     printHeader();
     loadDemoData(rm, ss, fl);
@@ -321,6 +327,20 @@ int main() {
             break;
         }
 
+        // -- WEEK 2: TRIP SIMULATOR ------------------------------------------
+
+        case 19: {
+            cout << "  How many trips to simulate? (e.g. 500): ";
+            int n; cin >> n; clearInput();
+            sim.simulateTrips(n);
+            break;
+        }
+
+        case 20: {
+            sim.simulateDelays();
+            break;
+        }
+
         case 0: {
             cout << "\n  [i] Exiting. CSV logs saved to data/ folder.\n";
             cout << "  [i] Run analytics/transit_analysis.py next for Python layer.\n\n";
@@ -328,7 +348,7 @@ int main() {
         }
 
         default:
-            cout << "  [!] Invalid choice. Enter 0-18.\n";
+            cout << "  [!] Invalid choice. Enter 0-20.\n";
         }
 
     } while (choice != 0);

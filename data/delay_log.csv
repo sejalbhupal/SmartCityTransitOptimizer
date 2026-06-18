@@ -1,0 +1,8 @@
+bus_id,route_name,scheduled_time,actual_time,delay_minutes
+101,Nagpur-Wardha,1430,1437,7
+102,Nagpur-Amravati,900,917,17
+103,Nagpur-Chandrapur,1200,1209,9
+104,Nagpur-Yavatmal,1615,1616,1
+105,Nagpur-Bramhapuri,730,736,6
+106,Nagpur-Bhandara,1100,1108,8
+107,Nagpur-Gondia,1330,1343,13
