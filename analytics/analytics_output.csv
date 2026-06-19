@@ -1,0 +1,43 @@
+from_station,to_station,trip_count,avg_distance,avg_fare,avg_duration,efficiency_score,total_revenue_rs,revenue_pct,route_label
+Sitabuldi,Nagpur Central,18,3.0,20.0,10.61111111111111,6.0,360.0,1.91,Sitabuldi -> Nagpur Central
+Hingna,Katol Road,20,5.0,20.0,18.85,4.0,400.0,2.12,Hingna -> Katol Road
+Nagpur Central,Sitabuldi,10,3.0,20.0,13.2,3.33,200.0,1.06,Nagpur Central -> Sitabuldi
+Sitabuldi,Dharampeth,12,4.0,20.0,16.083333333333332,3.0,240.0,1.27,Sitabuldi -> Dharampeth
+Kamptee,Katol Road,18,7.0,30.0,22.666666666666668,2.57,540.0,2.86,Kamptee -> Katol Road
+Nagpur Central,Wardha Road,16,8.0,30.0,27.5625,2.0,480.0,2.54,Nagpur Central -> Wardha Road
+Katol Road,Hingna,10,5.0,20.0,19.6,2.0,200.0,1.06,Katol Road -> Hingna
+Wardha Road,Nagpur Central,16,8.0,30.0,28.5,2.0,480.0,2.54,Wardha Road -> Nagpur Central
+Dharampeth,Hingna,16,9.0,40.0,29.375,1.78,640.0,3.39,Dharampeth -> Hingna
+Hingna,Wardha Road,16,10.625,40.625,36.625,1.51,650.0,3.44,Hingna -> Wardha Road
+Hingna,Dharampeth,13,9.0,40.0,29.615384615384617,1.44,520.0,2.76,Hingna -> Dharampeth
+Katol Road,Kamptee,10,7.0,30.0,23.4,1.43,300.0,1.59,Katol Road -> Kamptee
+Wardha Road,Dharampeth,18,13.333333333333334,46.666666666666664,43.22222222222222,1.35,840.0,4.45,Wardha Road -> Dharampeth
+Wardha Road,Sitabuldi,8,6.0,30.0,19.0,1.33,240.0,1.27,Wardha Road -> Sitabuldi
+Sitabuldi,Wardha Road,8,6.0,30.0,19.25,1.33,240.0,1.27,Sitabuldi -> Wardha Road
+Kamptee,Dharampeth,15,11.4,42.666666666666664,38.2,1.32,640.0,3.39,Kamptee -> Dharampeth
+Wardha Road,Hingna,15,11.333333333333334,40.666666666666664,35.4,1.32,610.0,3.23,Wardha Road -> Hingna
+Dharampeth,Wardha Road,15,11.666666666666666,42.0,39.666666666666664,1.29,630.0,3.34,Dharampeth -> Wardha Road
+Wardha Road,Katol Road,14,11.0,40.0,36.214285714285715,1.27,560.0,2.97,Wardha Road -> Katol Road
+Dharampeth,Sitabuldi,5,4.0,20.0,11.4,1.25,100.0,0.53,Dharampeth -> Sitabuldi
+Dharampeth,Kamptee,14,11.714285714285714,42.857142857142854,38.57142857142857,1.2,600.0,3.18,Dharampeth -> Kamptee
+Kamptee,Sitabuldi,14,11.928571428571429,42.857142857142854,39.07142857142857,1.17,600.0,3.18,Kamptee -> Sitabuldi
+Katol Road,Nagpur Central,13,11.615384615384615,42.30769230769231,38.0,1.12,550.0,2.91,Katol Road -> Nagpur Central
+Nagpur Central,Hingna,15,13.8,48.666666666666664,44.13333333333333,1.09,730.0,3.87,Nagpur Central -> Hingna
+Sitabuldi,Katol Road,13,12.0,43.07692307692308,40.23076923076923,1.08,560.0,2.97,Sitabuldi -> Katol Road
+Hingna,Sitabuldi,11,10.909090909090908,40.0,34.09090909090909,1.01,440.0,2.33,Hingna -> Sitabuldi
+Katol Road,Wardha Road,11,11.0,40.0,35.81818181818182,1.0,440.0,2.33,Katol Road -> Wardha Road
+Hingna,Kamptee,11,11.181818181818182,40.90909090909091,35.0,0.98,450.0,2.38,Hingna -> Kamptee
+Kamptee,Hingna,13,13.384615384615385,47.69230769230769,41.69230769230769,0.97,620.0,3.29,Kamptee -> Hingna
+Wardha Road,Kamptee,12,12.5,44.166666666666664,40.166666666666664,0.96,530.0,2.81,Wardha Road -> Kamptee
+Katol Road,Sitabuldi,12,12.583333333333334,45.0,41.25,0.95,540.0,2.86,Katol Road -> Sitabuldi
+Nagpur Central,Dharampeth,11,12.090909090909092,43.63636363636363,35.81818181818182,0.91,480.0,2.54,Nagpur Central -> Dharampeth
+Katol Road,Dharampeth,11,12.636363636363637,45.45454545454545,40.54545454545455,0.87,500.0,2.65,Katol Road -> Dharampeth
+Hingna,Nagpur Central,11,13.727272727272727,47.27272727272727,42.72727272727273,0.8,520.0,2.76,Hingna -> Nagpur Central
+Sitabuldi,Hingna,10,12.9,44.0,38.4,0.78,440.0,2.33,Sitabuldi -> Hingna
+Nagpur Central,Katol Road,9,14.333333333333334,48.888888888888886,46.55555555555556,0.63,440.0,2.33,Nagpur Central -> Katol Road
+Kamptee,Wardha Road,8,13.125,46.25,44.125,0.61,370.0,1.96,Kamptee -> Wardha Road
+Dharampeth,Katol Road,8,13.25,46.25,41.0,0.6,370.0,1.96,Dharampeth -> Katol Road
+Dharampeth,Nagpur Central,8,13.25,46.25,42.625,0.6,370.0,1.96,Dharampeth -> Nagpur Central
+Kamptee,Nagpur Central,5,12.0,40.0,39.6,0.42,200.0,1.06,Kamptee -> Nagpur Central
+Nagpur Central,Kamptee,4,12.0,40.0,35.75,0.33,160.0,0.85,Nagpur Central -> Kamptee
+Sitabuldi,Kamptee,2,12.5,45.0,37.0,0.16,90.0,0.48,Sitabuldi -> Kamptee
