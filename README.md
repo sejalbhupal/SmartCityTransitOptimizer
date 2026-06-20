@@ -64,6 +64,8 @@ Output: three clean CSVs (`analytics_output.csv`, `station_footfall.csv`, `delay
 - Average delay by route bar chart
 - Fare revenue by route donut chart
 
+![Dashboard Screenshot](dashboard/dashboard_screenshot.png)
+
 ## Folder structure
 
 ```
