@@ -1,65 +1,74 @@
 # Smart City Transit Optimizer
 
-A C++ DSA-powered transit simulation system for a city's bus and metro network — built as a placement portfolio project combining core data structures, algorithm design, and a real-world domain (urban transit).
+A full-stack placement portfolio project combining a C++ DSA engine, a Python/Pandas analytics pipeline, and a Power BI dashboard — built around a simulated city transit network modeled loosely on Nagpur's bus system.
 
-This project is being built in 4 weekly phases: a C++ DSA engine (Weeks 1–2), a Python/Pandas analytics layer (Week 3), and a Power BI dashboard (Week 4).
+The goal was to demonstrate both core data structures & algorithms knowledge and data analytics skills in one connected, end-to-end pipeline, rather than as two separate disconnected projects.
 
-## Project goal
-
-Real transit systems — like Nagpur Metro or city bus networks — need software to manage routes, passengers, schedules, and fares. This project simulates that software at a small scale, using each core DSA topic as a real feature rather than an abstract exercise.
+> **Note:** This project uses simulated data, not a live feed. The C++ engine generates randomized but realistic trip data, which flows through the same kind of pipeline a real-time system would use.
 
 ## Architecture
 
 ```
-C++ DSA Engine  -->  CSV Logs  -->  Python/Pandas Analytics  -->  Power BI Dashboard
-  (Weeks 1-2)        (bridge)           (Week 3)                    (Week 4)
+ C++ DSA Engine          CSV Logs           Python / Pandas         Power BI
+ ───────────────    ───────────────    ──────────────────────    ──────────────
+ 7 station network  →  journey_log.csv  →  Peak hour analysis    →  KPI cards
+ 9 routes              station_stats.csv   Route efficiency         Route efficiency
+ 500+ simulated        delay_log.csv        score (NumPy)            bar chart
+ trips                                     Fare revenue              Busiest stations
+                                            breakdown                 chart
+                                           Delay summary             Delay by route
+                                                                       Fare revenue donut
 ```
 
 ## Tech stack
 
-- **C++** — core simulation engine (arrays, strings, linked lists, stacks, queues, binary search, sorting, recursion)
-- **Python / Pandas / NumPy** — analytics layer (Week 3)
-- **Power BI** — dashboard and visualization (Week 4)
-- **Git / GitHub** — version control
-
-## Progress
-
-### Week 1 — Core DSA modules (complete)
-
-| Module | DSA Topic | Description |
-|---|---|---|
-| `RouteManager` | Arrays + Strings | Stores stations and routes using a 2D adjacency matrix and string array |
-| `PassengerList` | Linked List | Singly linked list for boarding/alighting passengers |
-| `JourneyTracker` | Stack + Queue | Stack for journey undo log, queue for platform boarding line |
-| `FareLookup` | Binary Search | O(log n) fare lookup from a sorted distance-fare table |
-| `ScheduleSorter` | Merge Sort + STL Sort | Sorts bus schedules by arrival time and seat availability |
-| `PathFinder` | Recursion + Backtracking | DFS finds all paths between two stations, highlights the shortest |
-
-### Week 2 — Data simulation layer (complete)
-
-| Module | Purpose |
+| Layer | Tools |
 |---|---|
-| `TripSimulator` | Auto-generates 500+ randomized passenger journeys to populate CSV logs |
-| Delay simulator | Generates realistic scheduled-vs-actual arrival time gaps for each bus |
+| Simulation engine | C++ (arrays, strings, linked lists, stacks, queues, binary search, merge sort, recursion) |
+| Analytics | Python, Pandas, NumPy, Matplotlib |
+| Dashboard | Power BI Desktop |
+| Version control | Git, GitHub |
 
-After Week 2, the system has generated:
-- 500+ rows in `journey_log.csv`
-- 1000+ rows in `station_stats.csv` (station footfall)
-- 7 rows in `delay_log.csv` (bus delay records)
+## DSA modules (C++ layer)
 
-### Week 3 — Python analytics layer (in progress)
+| Module | DSA Topic | What it does |
+|---|---|---|
+| `RouteManager` | Arrays + Strings | Stores stations and routes in a 2D adjacency matrix; string-based station search |
+| `PassengerList` | Linked List | Singly linked list for boarding and alighting passengers |
+| `JourneyTracker` | Stack + Queue | Stack for journey undo log (LIFO), queue for platform boarding line (FIFO) |
+| `FareLookup` | Binary Search | O(log n) fare lookup from a sorted distance-fare table |
+| `ScheduleSorter` | Merge Sort + STL Sort | Sorts bus schedules by arrival time and by seat availability |
+| `PathFinder` | Recursion + Backtracking | DFS finds all paths between two stations, highlights the shortest |
+| `TripSimulator` | Randomized generation | Auto-generates 500+ realistic passenger journeys and bus delay records |
 
-Planned: peak-hour demand analysis, route efficiency scoring, fare revenue breakdown, and a clean aggregated CSV export for Power BI.
+## Analytics layer (Python)
 
-### Week 4 — Power BI dashboard (upcoming)
+`analytics/transit_analysis.py` reads the CSV logs produced by the C++ engine and runs:
 
-Planned: KPI cards, hourly demand heatmap, route efficiency chart, top stations, and route/date slicers.
+- **Peak hour analysis** — busiest boarding hours
+- **Route efficiency score** — passengers per km (NumPy-calculated)
+- **Station footfall ranking** — busiest stations
+- **Fare revenue breakdown** — total and % revenue per route
+- **Daily demand trend** — trips per day
+- **Delay summary** — average delay per route, on-time percentage
+
+Output: three clean CSVs (`analytics_output.csv`, `station_footfall.csv`, `delay_summary.csv`) feeding directly into Power BI, plus a quick Matplotlib chart for sanity-checking the data before building the dashboard.
+
+## Dashboard (Power BI)
+
+`dashboard/transit_dashboard.pbix` includes:
+
+- KPI cards — total trips, total revenue, average delay
+- Route efficiency bar chart
+- Busiest stations column chart
+- Average delay by route bar chart
+- Fare revenue by route donut chart
 
 ## Folder structure
 
 ```
 SmartCityTransitOptimizer/
-├── src/                     C++ source files (the DSA engine)
+├── src/                      C++ source files
 │   ├── main.cpp
 │   ├── RouteManager.cpp / .h
 │   ├── PassengerList.cpp / .h
@@ -69,16 +78,25 @@ SmartCityTransitOptimizer/
 │   ├── PathFinder.cpp / .h
 │   ├── TripSimulator.cpp / .h
 │   └── CSVLogger.h
-├── data/                    Generated CSV logs (bridge to Python)
+├── data/                      Generated CSV logs
 │   ├── journey_log.csv
 │   ├── station_stats.csv
 │   └── delay_log.csv
-├── analytics/               Python analysis scripts (Week 3)
-├── dashboard/                Power BI file (Week 4)
+├── analytics/                 Python analysis layer
+│   ├── transit_analysis.py
+│   ├── analytics_output.csv
+│   ├── station_footfall.csv
+│   ├── delay_summary.csv
+│   └── eda_summary.png
+├── dashboard/                 Power BI dashboard
+│   ├── transit_dashboard.pbix
+│   └── dashboard_screenshot.png
 └── README.md
 ```
 
 ## How to run
+
+### 1. C++ engine
 
 ```bash
 cd src
@@ -86,15 +104,26 @@ g++ main.cpp RouteManager.cpp PassengerList.cpp JourneyTracker.cpp FareLookup.cp
 ./transit        # or transit.exe on Windows
 ```
 
-The program loads a demo network of 7 Nagpur stations with 9 routes and a 7-bus schedule, then presents a menu-driven interface covering all modules.
+The program loads a demo network of 7 Nagpur stations and 9 routes, then presents a menu-driven interface. Try these first:
 
-### Try these first
-
-- **Option 6** — Book a ticket: runs recursion (path finding), binary search (fare lookup), and CSV logging together in one flow
+- **Option 6** — Book a ticket: runs recursion (path finding), binary search (fare lookup), and CSV logging together
 - **Option 19** — Simulate N trips: auto-generates randomized journey data
 - **Option 4** — Find all paths between two stations: demonstrates DFS with backtracking
+
+### 2. Python analytics
+
+```bash
+cd analytics
+pip install pandas numpy matplotlib
+python transit_analysis.py
+```
+
+### 3. Power BI dashboard
+
+Open `dashboard/transit_dashboard.pbix` in Power BI Desktop. The data source points to the CSVs in the `analytics/` folder — re-run steps 1 and 2, then click **Refresh** in Power BI to update the dashboard with new data.
 
 ## Author
 
 Sejal Bhupal
-[GitHub](https://github.com/sejalbhupal) · [LinkedIn](https://linkedin.com/in/sejal-bhupal)
+B.E. Computer Engineering, St. Vincent Pallotti College of Engineering & Technology, Nagpur
+[GitHub](https://github.com/sejalbhupal)
